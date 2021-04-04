@@ -1,0 +1,70 @@
+managed;
+
+define behavior for ZPR_I_Travel_M alias travel
+implementation in class zbp_pr_i_travel_m unique
+persistent table ZPR_TRAVEL2_M
+lock master
+early numbering
+
+//authorization master ( instance )
+etag master last_changed_at
+{
+mapping for ZPR_TRAVEL2_M corresponding;
+
+field ( readonly ) travel_id;
+
+field ( readonly ) created_at, created_by, last_changed_at, last_changed_by;
+
+//field ( mandatory ) AgencyID,TravelStatus,TotalPrice,CurrencyCode;
+
+//field ( mandatory ) BeginDate,EndDate,CustomerID;
+
+// Action
+action acceptTravel result [1] $self;
+internal action discount;
+
+// Validation
+validation validateCustomer on save { field customer_id; }
+
+// Determination
+determination addDiscount on modify {create;}
+
+  create;
+  update;
+  delete;
+  association _Booking { create; }
+}
+
+define behavior for ZPR_I_Booking_M //alias <alias_name>
+implementation in class zbp_pr_i_booling_m
+persistent table ZPR_BOOKING_M
+lock dependent by _Travel
+//authorization dependent by <association>
+etag master last_changed_at
+early numbering
+{
+field ( readonly ) travel_id;
+mapping for ZPR_BOOKING_M corresponding;
+
+  update;
+  delete;
+  association _BookSupplement { create; }
+  association _Travel { }
+}
+
+define behavior for ZPR_I_BookSuppl_M //alias <alias_name>
+implementation in class zbp_pr_i_booksuppl_m
+persistent table ZPR_BOOKSUPPL_M
+lock dependent by _Travel
+//authorization dependent by <association>
+etag master last_changed_at
+early numbering
+{
+  field ( readonly ) travel_id, booking_id;
+  mapping for ZPR_BOOKSUPPL_M corresponding;
+
+  update;
+  delete;
+
+  association _Travel { }
+}

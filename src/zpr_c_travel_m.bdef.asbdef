@@ -1,0 +1,13 @@
+projection;
+
+define behavior for ZPR_C_TRAVEL_M alias Travel
+{
+  use create;
+  use update;
+  use delete;
+
+use action acceptTravel;
+
+//  use action acceptTravel;
+
+}

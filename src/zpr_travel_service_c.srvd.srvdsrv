@@ -1,0 +1,9 @@
+@EndUserText.label: 'Travel Service'
+define service ZPR_TRAVEL_SERVICE_C {
+  expose ZPR_C_TRAVEL_M as Travel;
+  expose ZPR_I_Booking_M as Booking;
+  expose ZPR_I_BookSuppl_M as BookingSupplement;
+  expose /DMO/I_Agency as TravelAgency;
+  expose /DMO/I_Customer as Passenger;
+  expose I_Currency as Currency;
+}

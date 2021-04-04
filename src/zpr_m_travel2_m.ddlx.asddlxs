@@ -1,0 +1,29 @@
+@Metadata.layer: #CUSTOMER
+annotate entity ZPR_C_TRAVEL_M
+    with 
+{
+@UI.facet: [{purpose: #STANDARD,
+             type: #IDENTIFICATION_REFERENCE,
+             label: 'Travel',
+             position: 10 }]
+
+@UI.lineItem: [{position: 10, label: 'Airline' }]
+@UI.identification: [{position: 10, label: 'Travel ID' }]
+    travel_id;
+@UI.lineItem: [{position: 20, label: 'Agency ID' }]
+@UI.selectionField: [{position: 20 }]    
+@UI.identification: [{position: 20, label: 'Agency ID' }]
+    agency_id; //AgencyID;
+@UI.lineItem: [{position: 30, label: 'Customer ID' }]
+@UI.identification: [{position: 30, label: 'Customer ID' }]    
+    customer_id; //CustomerID;
+@UI.lineItem: [{position: 40, label: 'Total Price' }]  
+@UI.identification: [{position: 40, label: 'Total Price' }]  
+    total_price;
+@UI.identification: [{position: 50, label: 'Description' }]    
+    Description;
+@UI: { lineItem: [{position: 60, type: #FOR_ACTION, dataAction: 'acceptTravel', label: 'Accept Travel' }],
+       identification: [ {position: 60, label: 'Status'  } ] }    
+    overall_status;
+    
+}

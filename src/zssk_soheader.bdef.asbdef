@@ -1,0 +1,12 @@
+managed; // implementation in class zbp_ssk_soheader unique;
+
+define behavior for Zssk_SoHeader alias SOHeader //alias <alias_name>
+persistent table ZSS_VBAK
+lock master
+//authorization master ( instance )
+//etag master <field_name>
+{
+  create;
+  update;
+  delete;
+}

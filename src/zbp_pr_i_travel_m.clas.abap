@@ -1,0 +1,9 @@
+CLASS zbp_pr_i_travel_m DEFINITION
+PUBLIC
+ABSTRACT
+FINAL
+FOR BEHAVIOR OF zpr_i_travel_m.
+ENDCLASS.
+
+CLASS zbp_pr_i_travel_m IMPLEMENTATION.
+ENDCLASS.
